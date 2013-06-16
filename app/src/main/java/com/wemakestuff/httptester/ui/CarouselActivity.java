@@ -2,23 +2,14 @@
 
 package com.wemakestuff.httptester.ui;
 
-import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
-import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-
-import com.actionbarsherlock.view.Menu;
+import butterknife.InjectView;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
-import com.wemakestuff.httptester.BootstrapApplication;
+import com.viewpagerindicator.TitlePageIndicator;
 import com.wemakestuff.httptester.R;
 import com.wemakestuff.httptester.R.id;
-
-import com.viewpagerindicator.TitlePageIndicator;
-
-import butterknife.InjectView;
-import butterknife.Views;
 
 /**
  * Activity to view the carousel and view pager indicator with fragments.
@@ -45,9 +36,9 @@ public class CarouselActivity extends BootstrapFragmentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
-            case id.timer:
-                final Intent i = new Intent(this, BootstrapTimerActivity.class);
-                startActivity(i);
+            case -1:
+                //final Intent i = new Intent(this, BootstrapTimerActivity.class);
+                //startActivity(i);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

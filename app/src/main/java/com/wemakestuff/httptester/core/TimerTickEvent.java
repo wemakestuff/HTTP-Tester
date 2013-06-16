@@ -3,7 +3,7 @@ package com.wemakestuff.httptester.core;
 
 /**
  * Event used to pass tick events around through the message bus.
- * This is mainly used in the {@link BootstrapTimer} to show the updates on the timer
+ * This is mainly used in the BootstrapTimer to show the updates on the timer
  * as the background service runs the timer.
  */
 public class TimerTickEvent {

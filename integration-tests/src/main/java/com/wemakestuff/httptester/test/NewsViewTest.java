@@ -6,9 +6,6 @@ import static com.wemakestuff.httptester.core.Constants.Extra.NEWS_ITEM;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.wemakestuff.httptester.core.News;
-import com.wemakestuff.httptester.ui.CarouselActivity;
-
 
 /**
  * Tests for displaying a specific {@link News} item
@@ -29,7 +26,7 @@ public class NewsViewTest extends ActivityInstrumentationTestCase2<CarouselActiv
     protected void setUp() throws Exception {
         super.setUp();
         Intent intent = new Intent();
-        // TODO: BUILD News item for testing.
+        // TODO: BUILD Test item for testing.
         News news = new News();
         news.setTitle("Foo");
         news.setObjectId("Bar");

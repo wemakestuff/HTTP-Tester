@@ -5,28 +5,24 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.wemakestuff.httptester.R;
-import com.wemakestuff.httptester.R.id;
-import com.wemakestuff.httptester.R.layout;
-import com.wemakestuff.httptester.authenticator.LogoutService;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.github.kevinsawicki.wishlist.Toaster;
 import com.github.kevinsawicki.wishlist.ViewUtils;
+import com.wemakestuff.httptester.R;
+import com.wemakestuff.httptester.R.id;
+import com.wemakestuff.httptester.R.layout;
+import com.wemakestuff.httptester.services.TestService;
 
 import java.util.Collections;
 import java.util.List;
@@ -42,7 +38,7 @@ import java.util.List;
 public abstract class ItemListFragment<E> extends SherlockFragment
         implements LoaderCallbacks<List<E>> {
 
-    private static final String FORCE_REFRESH = "forceRefresh";
+    private static final String SEND_REQUEST = "sendRequest";
 
     /**
      * @param args
@@ -50,8 +46,8 @@ public abstract class ItemListFragment<E> extends SherlockFragment
      * @return true if the bundle indicates a requested forced refresh of the
      *         items
      */
-    protected static boolean isForceRefresh(Bundle args) {
-        return args != null && args.getBoolean(FORCE_REFRESH, false);
+    protected static boolean isSendRequest(Bundle args) {
+        return args != null && args.getBoolean(SEND_REQUEST, false);
     }
 
     /**
@@ -147,7 +143,7 @@ public abstract class ItemListFragment<E> extends SherlockFragment
 
     @Override
     public void onCreateOptionsMenu(Menu optionsMenu, MenuInflater inflater) {
-        inflater.inflate(R.menu.bootstrap, optionsMenu);
+        inflater.inflate(R.menu.tester, optionsMenu);
     }
 
     @Override
@@ -155,47 +151,49 @@ public abstract class ItemListFragment<E> extends SherlockFragment
         if (!isUsable())
             return false;
         switch (item.getItemId()) {
-        case id.refresh:
-            forceRefresh();
+        case id.save_test:
+            Log.d("ItemListFragment", "Save Test Pressed");
             return true;
-        case R.id.logout:
-            logout();
+        case R.id.clear_all:
+            Log.d("ItemListFragment", "Clear All Pressed");
+            return true;
+        case id.run_test:
+            Log.d("ItemListFragment", "Run Test Pressed");
             return true;
         default:
             return super.onOptionsItemSelected(item);
         }
     }
 
-    abstract LogoutService getLogoutService();
+    abstract TestService getTestService();
 
-    private void logout() {
-        getLogoutService().logout(new Runnable() {
+    private void runTest() {
+        getTestService().sendRequest(new Runnable() {
             @Override
             public void run() {
-                // Calling a refresh will force the service to look for a logged in user
-                // and when it finds none the user will be requested to log in again.
-                forceRefresh();
+                sendRequest();
             }
         });
+
     }
 
     /**
-     * Force a refresh of the items displayed ignoring any cached items
+     * Send a request
      */
-    protected void forceRefresh() {
+    protected void sendRequest() {
         Bundle bundle = new Bundle();
-        bundle.putBoolean(FORCE_REFRESH, true);
-        refresh(bundle);
+        bundle.putBoolean(SEND_REQUEST, true);
+        doRequest(bundle);
     }
 
     /**
      * Refresh the fragment's list
      */
-    public void refresh() {
-        refresh(null);
+    public void doRequest() {
+        doRequest(null);
     }
 
-    private void refresh(final Bundle args) {
+    private void doRequest(final Bundle args) {
         if (!isUsable())
             return;
 
@@ -288,7 +286,6 @@ public abstract class ItemListFragment<E> extends SherlockFragment
     protected void refreshWithProgress() {
         items.clear();
         setListShown(false);
-        refresh();
     }
 
     /**

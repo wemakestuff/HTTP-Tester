@@ -38,17 +38,13 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
         Bundle bundle = new Bundle();
         switch (position) {
         case 0:
-            NewsListFragment newsFragment = new NewsListFragment();
-            newsFragment.setArguments(bundle);
-            return newsFragment;
+            TestFragment testFragment = new TestFragment();
+            testFragment.setArguments(bundle);
+            return testFragment;
         case 1:
-            UserListFragment userListFragment = new UserListFragment();
-            userListFragment.setArguments(bundle);
-            return userListFragment;
-        case 2:
-            CheckInsListFragment checkInsFragment = new CheckInsListFragment();
-            checkInsFragment.setArguments(bundle);
-            return checkInsFragment;
+            TestHistoryListFragment testHistoryListFragment = new TestHistoryListFragment();
+            testHistoryListFragment.setArguments(bundle);
+            return testHistoryListFragment;
         default:
             return null;
         }
@@ -58,11 +54,9 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
         case 0:
-            return resources.getString(R.string.page_news);
+            return resources.getString(R.string.app_name);
         case 1:
-            return resources.getString(R.string.page_users);
-        case 2:
-            return resources.getString(R.string.page_checkins);
+            return resources.getString(R.string.output);
         default:
             return null;
         }

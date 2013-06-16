@@ -1,28 +1,28 @@
 package com.wemakestuff.httptester.ui;
 
 import android.view.LayoutInflater;
-
 import com.wemakestuff.httptester.R;
+import com.wemakestuff.httptester.core.TestHistory;
 
 import java.util.List;
 
-public class TestHistoryListAdapter extends AlternatingColorListAdapter<News> {
+public class TestHistoryListAdapter extends AlternatingColorListAdapter<TestHistory> {
     /**
      * @param inflater
      * @param items
      * @param selectable
      */
-    public TestHistoryListAdapter(LayoutInflater inflater, List<News> items,
+    public TestHistoryListAdapter(LayoutInflater inflater, List<TestHistory> items,
                                   boolean selectable) {
-        super(R.layout.news_list_item, inflater, items, selectable);
+        super(R.layout.test_history_list_item, inflater, items, selectable);
     }
 
     /**
      * @param inflater
      * @param items
      */
-    public TestHistoryListAdapter(LayoutInflater inflater, List<News> items) {
-        super(R.layout.news_list_item, inflater, items);
+    public TestHistoryListAdapter(LayoutInflater inflater, List<TestHistory> items) {
+        super(R.layout.test_history_list_item, inflater, items);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class TestHistoryListAdapter extends AlternatingColorListAdapter<News> {
     }
 
     @Override
-    protected void update(int position, News item) {
+    protected void update(int position, TestHistory item) {
         super.update(position, item);
 
         setText(0, item.getTitle());

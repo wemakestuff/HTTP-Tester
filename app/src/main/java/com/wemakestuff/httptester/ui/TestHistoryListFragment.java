@@ -1,29 +1,24 @@
 package com.wemakestuff.httptester.ui;
 
-import static com.wemakestuff.httptester.core.Constants.Extra.NEWS_ITEM;
-import android.accounts.OperationCanceledException;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
 import android.view.View;
 import android.widget.ListView;
-
-import com.wemakestuff.httptester.BootstrapApplication;
-import com.wemakestuff.httptester.BootstrapServiceProvider;
-import com.wemakestuff.httptester.R;
-import com.wemakestuff.httptester.authenticator.LogoutService;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
-import javax.inject.Inject;
+import com.wemakestuff.httptester.BootstrapApplication;
+import com.wemakestuff.httptester.R;
+import com.wemakestuff.httptester.core.TestHistory;
+import com.wemakestuff.httptester.services.TestService;
 
+import javax.inject.Inject;
 import java.util.Collections;
 import java.util.List;
 
-public class TestHistoryListFragment extends ItemListFragment<News> {
+public class TestHistoryListFragment extends ItemListFragment<TestHistory> {
 
-    @Inject protected BootstrapServiceProvider serviceProvider;
-    @Inject protected LogoutService logoutService;
-
+    @Inject
+    protected TestService testService;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +30,7 @@ public class TestHistoryListFragment extends ItemListFragment<News> {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        setEmptyText(R.string.no_news);
+        setEmptyText(R.string.no_test_history);
 
 
     }
@@ -49,12 +44,12 @@ public class TestHistoryListFragment extends ItemListFragment<News> {
 
         getListAdapter()
                 .addHeader(activity.getLayoutInflater()
-                        .inflate(R.layout.news_list_item_labels, null));
+                        .inflate(R.layout.test_history_list_item_labels, null));
     }
 
     @Override
-    LogoutService getLogoutService() {
-        return logoutService;
+    TestService getTestService() {
+        return testService;
     }
 
     @Override
@@ -65,42 +60,35 @@ public class TestHistoryListFragment extends ItemListFragment<News> {
     }
 
     @Override
-    public Loader<List<News>> onCreateLoader(int id, Bundle args) {
-        final List<News> initialItems = items;
-        return new ThrowableLoader<List<News>>(getActivity(), items) {
+    public Loader<List<TestHistory>> onCreateLoader(int id, Bundle args) {
+        final List<TestHistory> initialItems = items;
+        return new ThrowableLoader<List<TestHistory>>(getActivity(), items) {
 
             @Override
-            public List<News> loadData() throws Exception {
-                try {
-                    if(getActivity() != null) {
-                        return serviceProvider.getService(getActivity()).getNews();
-                    } else {
-                        return Collections.emptyList();
-                    }
-
-                } catch (OperationCanceledException e) {
-                    Activity activity = getActivity();
-                    if (activity != null)
-                        activity.finish();
-                    return initialItems;
+            public List<TestHistory> loadData() throws Exception {
+                if (getActivity() != null) {
+                    //return serviceProvider.getService(getActivity()).getNews();
+                    return Collections.emptyList();
+                } else {
+                    return Collections.emptyList();
                 }
             }
         };
     }
 
     @Override
-    protected SingleTypeAdapter<News> createAdapter(List<News> items) {
-        return new NewsListAdapter(getActivity().getLayoutInflater(), items);
+    protected SingleTypeAdapter<TestHistory> createAdapter(List<TestHistory> items) {
+        return new TestHistoryListAdapter(getActivity().getLayoutInflater(), items);
     }
 
     public void onListItemClick(ListView l, View v, int position, long id) {
-        News news = ((News) l.getItemAtPosition(position));
+        TestHistory news = ((TestHistory) l.getItemAtPosition(position));
 
-        startActivity(new Intent(getActivity(), NewsActivity.class).putExtra(NEWS_ITEM, news));
+        //startActivity(new Intent(getActivity(), NewsActivity.class).putExtra(NEWS_ITEM, news));
     }
 
     @Override
     protected int getErrorMessage(Exception exception) {
-        return R.string.error_loading_news;
+        return R.string.error_loading_test_history;
     }
 }

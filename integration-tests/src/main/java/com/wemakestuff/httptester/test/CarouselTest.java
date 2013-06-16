@@ -4,8 +4,6 @@ package com.wemakestuff.httptester.test;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.wemakestuff.httptester.ui.CarouselActivity;
-
 
 /**
  * Test displaying of carousel.

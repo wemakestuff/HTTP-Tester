@@ -1,27 +1,19 @@
 package com.wemakestuff.httptester.core;
 
-import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.SystemClock;
-import android.support.v4.app.NotificationCompat;
-
-import com.wemakestuff.httptester.BootstrapApplication;
-import com.wemakestuff.httptester.R;
-import com.wemakestuff.httptester.ui.BootstrapTimerActivity;
-import javax.inject.Inject;
-
-import com.wemakestuff.httptester.util.Ln;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Produce;
 import com.squareup.otto.Subscribe;
+import com.wemakestuff.httptester.BootstrapApplication;
+import com.wemakestuff.httptester.util.Ln;
 
-import static com.wemakestuff.httptester.core.Constants.Notification.TIMER_NOTIFICATION_ID;
+import javax.inject.Inject;
 
 public class TimerService extends Service {
 
@@ -59,8 +51,6 @@ public class TimerService extends Service {
         // Unregister bus, since its not longer needed as the service is shutting down
         BUS.unregister(this);
 
-        notificationManager.cancel(TIMER_NOTIFICATION_ID);
-
         Ln.d("Service has been destroyed");
 
         super.onDestroy();
@@ -74,10 +64,6 @@ public class TimerService extends Service {
             timerStarted = true;
 
             startTimer();
-
-            // Run as foreground service: http://stackoverflow.com/a/3856940/5210
-            // Another example: https://github.com/commonsguy/cw-android/blob/master/Notifications/FakePlayer/src/com/commonsware/android/fakeplayerfg/PlayerService.java
-            startForeground(TIMER_NOTIFICATION_ID, getNotification(getString(R.string.timer_running)));
         }
 
         return START_NOT_STICKY;
@@ -109,9 +95,6 @@ public class TimerService extends Service {
      * Pauses the active running timer and updates the notification in the status bar.
      */
     private void pauseTimer() {
-
-        updateNotification(getString(R.string.timer_is_paused));
-
         timerHandler.removeMessages(TICK_WHAT);
         pausedBaseTime = SystemClock.elapsedRealtime() - base;
         timerRunning = false;
@@ -127,7 +110,6 @@ public class TimerService extends Service {
 
     private void startTimer() {
         startChronoTimer();
-        notifyTimerRunning();
     }
 
     private void startChronoTimer() {
@@ -173,40 +155,5 @@ public class TimerService extends Service {
 
         BUS.post(produceTickEvent());
 
-    }
-
-
-
-    private void notifyTimerRunning() {
-        updateNotification(getString(R.string.timer_running));
-        produceTimerIsPausedEvent();
-    }
-
-
-    private void updateNotification(String message) {
-        notificationManager.notify(TIMER_NOTIFICATION_ID, getNotification(message));
-
-    }
-
-    /**
-     * Creates a notification to show in the notification bar
-     * @param message the message to display in the notification bar
-     * @return a new {@link Notification}
-     */
-    private Notification getNotification(String message) {
-        final Intent i = new Intent(this, BootstrapTimerActivity.class);
-
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, 0);
-
-        return new NotificationCompat.Builder(this)
-                .setContentTitle(getString(R.string.app_name))
-                .setSmallIcon(R.drawable.ic_stat_ab_notification)
-                .setContentText(message)
-                .setAutoCancel(false)
-                .setOnlyAlertOnce(true)
-                .setOngoing(true)
-                .setWhen(System.currentTimeMillis())
-                .setContentIntent(pendingIntent)
-                .getNotification();
     }
 }

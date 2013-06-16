@@ -5,9 +5,6 @@ package com.wemakestuff.httptester.core.core;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-import com.wemakestuff.httptester.core.BootstrapService;
-import com.wemakestuff.httptester.core.User;
-
 import java.util.List;
 
 import org.junit.Ignore;

@@ -1,10 +1,6 @@
 package com.wemakestuff.httptester.services;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
-import android.accounts.AccountManagerFuture;
 import android.content.Context;
-import com.wemakestuff.httptester.core.Constants;
 import com.wemakestuff.httptester.util.Ln;
 import com.wemakestuff.httptester.util.SafeAsyncTask;
 
@@ -40,18 +36,6 @@ public class TestService {
 
         @Override
         public Boolean call() throws Exception {
-
-            final Account[] accounts = AccountManager.get(context).getAccountsByType(Constants.Auth.BOOTSTRAP_ACCOUNT_TYPE);
-            if(accounts.length > 0) {
-                AccountManagerFuture<Boolean> removeAccountFuture = AccountManager.get(context).removeAccount
-                        (accounts[0], null, null);
-                if(removeAccountFuture.getResult() == true) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-
             return false;
         }
 

@@ -3,9 +3,9 @@ package com.wemakestuff.httptester.ui;
 
 import android.view.LayoutInflater;
 
-import com.actionbarsherlock.R.color;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.wemakestuff.httptester.R.drawable;
+import com.wemakestuff.httptester.R.color;
 
 import java.util.List;
 

@@ -6,11 +6,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.doReturn;
 
-import com.wemakestuff.httptester.core.BootstrapService;
-import com.wemakestuff.httptester.core.CheckIn;
-import com.wemakestuff.httptester.core.News;
-import com.wemakestuff.httptester.core.User;
-import com.wemakestuff.httptester.core.UserAgentProvider;
 import com.github.kevinsawicki.http.HttpRequest;
 
 import java.io.BufferedReader;

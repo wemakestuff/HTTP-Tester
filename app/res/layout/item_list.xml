@@ -19,9 +19,4 @@
         android:gravity="center"
         android:visibility="gone" />
 
-    <ProgressBar
-        android:id="@+id/pb_loading"
-        style="@style/ListSpinner"
-        android:layout_centerInParent="true" />
-
 </RelativeLayout>
