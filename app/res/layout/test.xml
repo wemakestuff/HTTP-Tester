@@ -8,63 +8,65 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/uri_label"
-            android:id="@+id/uri_label"/>
+            android:id="@+id/tv_uri_label"/>
     <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/uri_protocol_spinner"
+            android:id="@+id/sp_uri_protocol"
             android:entries="@array/protocol_types"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/uri"
+            android:id="@+id/et_uri"
             android:inputType="textUri"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/query_parameters"
-            android:id="@+id/query_parameters_label"/>
+            android:id="@+id/tv_query_parameters_label"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/clear_query_parameters_button"
+            android:id="@+id/ib_clear_query_parameters"
             android:contentDescription="@string/clear_query_parameters"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/add_query_parameters_button"
+            android:id="@+id/ib_add_query_parameter"
             android:contentDescription="@string/add_query_parameters"
             />
     <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/query_parameters_list"/>
+            android:id="@+id/lv_query_parameters"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/headers"
-            android:id="@+id/headers_label"/>
+            android:id="@+id/tv_headers_label"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/add_headers_button"
+            android:id="@+id/ib_add_header"
             android:contentDescription="@string/add_headers"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/clear_headers_button"
+            android:id="@+id/ib_clear_headers"
             android:contentDescription="@string/clear_headers"/>
     <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/headers_list"/>
+            android:id="@+id/lv_headers"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/payload"
-            android:id="@+id/payload_label"/>
+            android:id="@+id/tv_payload_label"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/payload" android:inputType="text|textMultiLine" android:hint="@string/payload"/>
+            android:id="@+id/et_payload"
+            android:inputType="text|textMultiLine"
+            android:hint="@string/payload"/>
 </RelativeLayout>

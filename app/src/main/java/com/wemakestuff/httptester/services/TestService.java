@@ -1,4 +1,4 @@
-package com.wemakestuff.httptester.authenticator;
+package com.wemakestuff.httptester.services;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -12,30 +12,28 @@ import javax.inject.Inject;
 
 
 /**
- * Class used for logging a user out.
+ * Class used for sending and receiving a test via HTTP.
  */
-public class LogoutService {
+public class TestService {
 
     protected Context context;
-    protected AccountManager accountManager;
 
     @Inject
-    public LogoutService(Context context, AccountManager accountManager) {
+    public TestService(Context context) {
         this.context = context;
-        this.accountManager = accountManager;
     }
 
-    public void logout(final Runnable onSuccess) {
+    public void sendRequest(final Runnable onSuccess) {
 
-        new LogoutTask(context, onSuccess).execute();
+        new RequestTask(context, onSuccess).execute();
     }
 
-    private static class LogoutTask extends SafeAsyncTask<Boolean> {
+    private static class RequestTask extends SafeAsyncTask<Boolean> {
 
         private final Context context;
         private Runnable onSuccess;
 
-        protected LogoutTask(Context context, Runnable onSuccess) {
+        protected RequestTask(Context context, Runnable onSuccess) {
             this.context = context;
             this.onSuccess = onSuccess;
         }
@@ -58,10 +56,10 @@ public class LogoutService {
         }
 
         @Override
-        protected void onSuccess(Boolean accountWasRemoved) throws Exception {
-            super.onSuccess(accountWasRemoved);
+        protected void onSuccess(Boolean requestSuccessful) throws Exception {
+            super.onSuccess(requestSuccessful);
 
-            Ln.d("Logout succeeded: %s", accountWasRemoved);
+            Ln.d("Request succeeded: %s", requestSuccessful);
             onSuccess.run();
 
         }
@@ -69,7 +67,7 @@ public class LogoutService {
         @Override
         protected void onException(Exception e) throws RuntimeException {
             super.onException(e);
-            Ln.e(e.getCause(), "Logout failed.");
+            Ln.e(e.getCause(), "Request failed.");
         }
     }
 }

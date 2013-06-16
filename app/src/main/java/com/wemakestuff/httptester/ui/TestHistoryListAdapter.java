@@ -3,19 +3,17 @@ package com.wemakestuff.httptester.ui;
 import android.view.LayoutInflater;
 
 import com.wemakestuff.httptester.R;
-import com.wemakestuff.httptester.core.News;
-import com.wemakestuff.httptester.ui.AlternatingColorListAdapter;
 
 import java.util.List;
 
-public class NewsListAdapter extends AlternatingColorListAdapter<News> {
+public class TestHistoryListAdapter extends AlternatingColorListAdapter<News> {
     /**
      * @param inflater
      * @param items
      * @param selectable
      */
-    public NewsListAdapter(LayoutInflater inflater, List<News> items,
-                               boolean selectable) {
+    public TestHistoryListAdapter(LayoutInflater inflater, List<News> items,
+                                  boolean selectable) {
         super(R.layout.news_list_item, inflater, items, selectable);
     }
 
@@ -23,7 +21,7 @@ public class NewsListAdapter extends AlternatingColorListAdapter<News> {
      * @param inflater
      * @param items
      */
-    public NewsListAdapter(LayoutInflater inflater, List<News> items) {
+    public TestHistoryListAdapter(LayoutInflater inflater, List<News> items) {
         super(R.layout.news_list_item, inflater, items);
     }
 

@@ -2,7 +2,7 @@ package com.wemakestuff.httptester.core;
 
 import java.io.Serializable;
 
-public class News implements Serializable {
+public class Test implements Serializable {
 
     private static final long serialVersionUID = -6641292855569752036L;
 

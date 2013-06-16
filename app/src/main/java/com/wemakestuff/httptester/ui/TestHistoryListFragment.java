@@ -1,9 +1,9 @@
 package com.wemakestuff.httptester.ui;
 
+import static com.wemakestuff.httptester.core.Constants.Extra.NEWS_ITEM;
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
 import android.view.View;
@@ -13,18 +13,17 @@ import com.wemakestuff.httptester.BootstrapApplication;
 import com.wemakestuff.httptester.BootstrapServiceProvider;
 import com.wemakestuff.httptester.R;
 import com.wemakestuff.httptester.authenticator.LogoutService;
-import com.wemakestuff.httptester.core.CheckIn;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import javax.inject.Inject;
 
-import javax.inject.Inject;
 import java.util.Collections;
 import java.util.List;
 
-public class CheckInsListFragment extends ItemListFragment<CheckIn> {
+public class TestHistoryListFragment extends ItemListFragment<News> {
 
     @Inject protected BootstrapServiceProvider serviceProvider;
     @Inject protected LogoutService logoutService;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,8 @@ public class CheckInsListFragment extends ItemListFragment<CheckIn> {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        setEmptyText(R.string.no_news);
 
 
     }
@@ -48,7 +49,7 @@ public class CheckInsListFragment extends ItemListFragment<CheckIn> {
 
         getListAdapter()
                 .addHeader(activity.getLayoutInflater()
-                        .inflate(R.layout.checkins_list_item_labels, null));
+                        .inflate(R.layout.news_list_item_labels, null));
     }
 
     @Override
@@ -64,15 +65,15 @@ public class CheckInsListFragment extends ItemListFragment<CheckIn> {
     }
 
     @Override
-    public Loader<List<CheckIn>> onCreateLoader(int id, Bundle args) {
-        final List<CheckIn> initialItems = items;
-        return new ThrowableLoader<List<CheckIn>>(getActivity(), items) {
+    public Loader<List<News>> onCreateLoader(int id, Bundle args) {
+        final List<News> initialItems = items;
+        return new ThrowableLoader<List<News>>(getActivity(), items) {
 
             @Override
-            public List<CheckIn> loadData() throws Exception {
+            public List<News> loadData() throws Exception {
                 try {
                     if(getActivity() != null) {
-                        return serviceProvider.getService(getActivity()).getCheckIns();
+                        return serviceProvider.getService(getActivity()).getNews();
                     } else {
                         return Collections.emptyList();
                     }
@@ -88,24 +89,18 @@ public class CheckInsListFragment extends ItemListFragment<CheckIn> {
     }
 
     @Override
-    protected SingleTypeAdapter<CheckIn> createAdapter(List<CheckIn> items) {
-        return new CheckInsListAdapter(getActivity().getLayoutInflater(), items);
+    protected SingleTypeAdapter<News> createAdapter(List<News> items) {
+        return new NewsListAdapter(getActivity().getLayoutInflater(), items);
     }
 
     public void onListItemClick(ListView l, View v, int position, long id) {
-        CheckIn checkIn = ((CheckIn) l.getItemAtPosition(position));
+        News news = ((News) l.getItemAtPosition(position));
 
-        String uri = String.format("geo:%s,%s?q=%s",
-                checkIn.getLocation().getLatitude(),
-                checkIn.getLocation().getLongitude(),
-                checkIn.getName());
-
-        // Show a chooser that allows the user to decide how to display this data, in this case, map data.
-        startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)), getString(R.string.choose)));
+        startActivity(new Intent(getActivity(), NewsActivity.class).putExtra(NEWS_ITEM, news));
     }
 
     @Override
     protected int getErrorMessage(Exception exception) {
-        return R.string.error_loading_checkins;
+        return R.string.error_loading_news;
     }
 }
