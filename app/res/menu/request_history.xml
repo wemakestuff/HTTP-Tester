@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/menu_clear"
+            android:icon="@drawable/ic_menu_clear_playlist"
+            android:showAsAction="always"
+            android:title="@string/clear">
+    </item>
+    <item
+            android:id="@+id/menu_history"
+            android:icon="@drawable/ic_menu_recent_history"
+            android:showAsAction="always"
+            android:title="@string/history">
+    </item>
+    <item
+            android:id="@+id/menu_search"
+            android:icon="@drawable/ic_menu_find_holo_light"
+            android:showAsAction="always"
+            android:title="@string/search">
+    </item>
+    <item
+            android:id="@+id/menu_sort_alphabetically"
+            android:icon="@drawable/ic_menu_sort_alphabetically"
+            android:showAsAction="always"
+            android:title="@string/sort">
+    </item>
+    <item
+            android:id="@+id/menu_sort_date"
+            android:icon="@drawable/ic_menu_sort_by_size"
+            android:showAsAction="always"
+            android:title="@string/sort">
+    </item>
+    <item
+            android:id="@+id/menu_settings"
+            android:icon="@drawable/ic_menu_preferences"
+            android:showAsAction="always"
+            android:title="@string/settings">
+    </item>
+</menu>

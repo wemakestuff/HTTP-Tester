@@ -3,6 +3,9 @@ package com.wemakestuff.httptester.ui;
 import android.os.Bundle;
 import android.widget.*;
 import butterknife.InjectView;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.wemakestuff.httptester.R;
 import com.wemakestuff.httptester.core.Constants;
 import com.wemakestuff.httptester.core.Request;
@@ -52,4 +55,30 @@ public class RequestActivity extends BootstrapActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getSupportMenuInflater();
+        inflater.inflate(R.menu.request, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_save:
+                return true;
+            case R.id.menu_history:
+                return true;
+            case R.id.menu_clear:
+                return true;
+            case R.id.menu_settings:
+                return true;
+            case R.id.menu_go:
+                return true;
+            case R.id.menu_stop:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

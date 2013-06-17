@@ -143,7 +143,7 @@ public abstract class ItemListFragment<E> extends SherlockFragment
 
     @Override
     public void onCreateOptionsMenu(Menu optionsMenu, MenuInflater inflater) {
-        inflater.inflate(R.menu.tester, optionsMenu);
+        inflater.inflate(R.menu.request, optionsMenu);
     }
 
     @Override
