@@ -7,10 +7,7 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.wemakestuff.httptester.R;
-import com.wemakestuff.httptester.core.Constants;
-import com.wemakestuff.httptester.core.HeaderParameter;
-import com.wemakestuff.httptester.core.QueryParameter;
-import com.wemakestuff.httptester.core.Request;
+import com.wemakestuff.httptester.core.*;
 import com.wemakestuff.httptester.view.FlowLayout;
 
 import java.util.ArrayList;
@@ -21,7 +18,7 @@ public class RequestActivity extends BootstrapActivity {
     protected Request requestItem;
     @InjectView(R.id.tv_protocol_label)
     protected TextView protocolLabel;
-    @InjectView(R.id.sp_url_protocol)
+    @InjectView(R.id.sp_protocol)
     protected Spinner protocol;
     @InjectView(R.id.tv_request_method_label)
     protected TextView requestMethodLabel;
@@ -74,20 +71,26 @@ public class RequestActivity extends BootstrapActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        List<QueryParameter> queryParams = new ArrayList<QueryParameter>();
+        List<Item> queryParams = new ArrayList<Item>();
         queryParams.add(new QueryParameter("city", "orlando"));
         queryParams.add(new QueryParameter("state", "florida"));
 
-        List<HeaderParameter> headerParams = new ArrayList<HeaderParameter>();
+        List<Item> headerParams = new ArrayList<Item>();
         headerParams.add(new HeaderParameter("Accept", "application/json"));
         headerParams.add(new HeaderParameter("Authorization", "SDASD!112312asdfar23"));
 
-        QueryParameterListAdapter queryParamsAdapter = new QueryParameterListAdapter(getLayoutInflater(), queryParams);
+        ItemListAdapter queryParamsAdapter = new ItemListAdapter(getLayoutInflater(), queryParams);
         for (int i = 0; i < queryParamsAdapter.getCount(); i++) {
             queryParametersList.addView(queryParamsAdapter.getView(i, null, queryParametersList));
         }
 
-        HeaderParameterListAdapter headerParamsAdapter = new HeaderParameterListAdapter(getLayoutInflater(), headerParams);
+        ArrayAdapter<Constants.HttpProtocol> protocolAdapter = new ArrayAdapter<Constants.HttpProtocol>(this, android.R.layout.simple_list_item_1, Constants.HttpProtocol.values());
+        protocol.setAdapter(protocolAdapter);
+
+        ArrayAdapter<Constants.RequestMethod> requestMethodAdapter = new ArrayAdapter<Constants.RequestMethod>(this, android.R.layout.simple_list_item_1, Constants.RequestMethod.values());
+        requestMethod.setAdapter(requestMethodAdapter);
+
+        ItemListAdapter headerParamsAdapter = new ItemListAdapter(getLayoutInflater(), headerParams);
         for (int i = 0; i < headerParamsAdapter.getCount(); i++) {
             headersList.addView(headerParamsAdapter.getView(i, null, headersList));
         }

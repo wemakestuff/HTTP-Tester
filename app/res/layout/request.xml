@@ -2,36 +2,39 @@
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/request_scroll" android:background="@color/abs__background_holo_dark">
+        android:layout_height="match_parent"
+        android:id="@+id/request_scroll" android:background="@drawable/main_background">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="match_parent"
-                  android:layout_height="match_parent"
+                  android:layout_height="wrap_content"
                   android:orientation="vertical">
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/protocol"
                 android:id="@+id/tv_protocol_label"/>
         <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/sp_url_protocol"/>
+                android:hint="@string/protocol"
+                android:id="@+id/sp_protocol"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/request_method"
                 android:id="@+id/tv_request_method_label"/>
-        <Spinner android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/sp_request_method"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/request_method"
+                android:id="@+id/sp_request_method"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/url"
                 android:id="@+id/tv_url_label"/>
         <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/et_url"
                 android:inputType="textUri"/>
@@ -65,7 +68,7 @@
                                                     android:layout_height="wrap_content"
                                                     android:layout_width="match_parent"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/no_query_parameters"
                 android:id="@+id/tv_no_query_parameters"
@@ -100,39 +103,39 @@
                                                     android:layout_height="wrap_content"
                                                     android:layout_width="match_parent"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/no_headers"
                 android:id="@+id/tv_no_headers"
                 android:visibility="gone"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/payload"
                 android:id="@+id/tv_payload_label"/>
         <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/et_payload"
                 android:inputType="text|textMultiLine"
                 android:hint="@string/payload"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/response"
                 android:id="@+id/tv_response_label"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:id="@+id/tv_response"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/response_body"
                 android:id="@+id/tv_response_body_label"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:id="@+id/tv_response_body"/>
