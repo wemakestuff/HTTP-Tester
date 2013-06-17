@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.github.kevinsawicki.wishlist.Toaster;
 import com.github.kevinsawicki.wishlist.ViewUtils;
 import com.wemakestuff.httptester.R;
-import com.wemakestuff.httptester.R.id;
 import com.wemakestuff.httptester.R.layout;
 import com.wemakestuff.httptester.services.TestService;
 
@@ -117,7 +115,7 @@ public abstract class ItemListFragment<E> extends SherlockFragment
                 onListItemClick((ListView) parent, view, position, id);
             }
         });
-        progressBar = (ProgressBar) view.findViewById(id.pb_loading);
+        //progressBar = (ProgressBar) view.findViewById(id.pb_loading);
 
         emptyView = (TextView) view.findViewById(android.R.id.empty);
 
@@ -151,15 +149,6 @@ public abstract class ItemListFragment<E> extends SherlockFragment
         if (!isUsable())
             return false;
         switch (item.getItemId()) {
-        case id.save_test:
-            Log.d("ItemListFragment", "Save Request Pressed");
-            return true;
-        case R.id.clear_all:
-            Log.d("ItemListFragment", "Clear All Pressed");
-            return true;
-        case id.run_test:
-            Log.d("ItemListFragment", "Run Request Pressed");
-            return true;
         default:
             return super.onOptionsItemSelected(item);
         }

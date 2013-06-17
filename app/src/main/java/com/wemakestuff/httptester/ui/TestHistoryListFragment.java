@@ -42,9 +42,7 @@ public class TestHistoryListFragment extends ItemListFragment<RequestHistory> {
         listView.setFastScrollEnabled(true);
         listView.setDividerHeight(0);
 
-        getListAdapter()
-                .addHeader(activity.getLayoutInflater()
-                        .inflate(R.layout.test_history_list_item_labels, null));
+        //getListAdapter().addHeader(activity.getLayoutInflater().inflate(R.layout.test_history_list_item_labels, null));
     }
 
     @Override

@@ -8,17 +8,6 @@
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:orientation="vertical">
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/url"
-                android:id="@+id/tv_url_label"/>
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/et_url"
-                android:inputType="textUri"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,37 +28,69 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/query_parameters"
-                android:id="@+id/tv_query_parameters_label"/>
-        <ImageButton
+                android:text="@string/url"
+                android:id="@+id/tv_url_label"/>
+        <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/ib_add_query_parameters"
-                android:contentDescription="@string/add_query_parameters"/>
-        <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ib_clear_query_parameters"
-                android:contentDescription="@string/clear_query_parameters"/>
+                android:id="@+id/et_url"
+                android:inputType="textUri"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ib_clear_query_parameters"
+                    android:src="@drawable/ic_menu_clear_playlist"
+                    android:layout_alignParentRight="true"
+                    android:contentDescription="@string/clear_query_parameters"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ib_add_query_parameters"
+                    android:src="@drawable/ic_menu_add"
+                    android:layout_toLeftOf="@id/ib_clear_query_parameters"
+                    android:contentDescription="@string/add_query_parameters"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/query_parameters"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/ib_add_query_parameters"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/tv_query_parameters_label"/>
+        </RelativeLayout>
         <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/lv_query_parameters"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/headers"
-                android:id="@+id/tv_headers_label"/>
-        <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ib_add_headers"
-                android:contentDescription="@string/add_headers"/>
-        <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ib_clear_headers"
-                android:contentDescription="@string/clear_headers"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ib_clear_headers"
+                    android:src="@drawable/ic_menu_clear_playlist"
+                    android:layout_alignParentRight="true"
+                    android:contentDescription="@string/clear_headers"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ib_add_headers"
+                    android:src="@drawable/ic_menu_add"
+                    android:layout_toLeftOf="@id/ib_clear_headers"
+                    android:contentDescription="@string/add_headers"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/headers"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/ib_add_headers"
+                    android:id="@+id/tv_headers_label"/>
+        </RelativeLayout>
         <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

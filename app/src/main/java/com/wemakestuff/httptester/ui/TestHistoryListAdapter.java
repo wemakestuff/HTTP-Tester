@@ -14,7 +14,7 @@ public class TestHistoryListAdapter extends AlternatingColorListAdapter<RequestH
      */
     public TestHistoryListAdapter(LayoutInflater inflater, List<RequestHistory> items,
                                   boolean selectable) {
-        super(R.layout.test_history_list_item, inflater, items, selectable);
+        super(R.layout.list_item, inflater, items, selectable);
     }
 
     /**
@@ -22,12 +22,12 @@ public class TestHistoryListAdapter extends AlternatingColorListAdapter<RequestH
      * @param items
      */
     public TestHistoryListAdapter(LayoutInflater inflater, List<RequestHistory> items) {
-        super(R.layout.test_history_list_item, inflater, items);
+        super(R.layout.list_item, inflater, items);
     }
 
     @Override
     protected int[] getChildViewIds() {
-        return new int[]{R.id.tv_url, R.id.tv_date};
+        return new int[]{R.id.tv_name, R.id.tv_value};
     }
 
     @Override

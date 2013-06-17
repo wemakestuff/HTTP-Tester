@@ -81,4 +81,9 @@ public class RequestActivity extends BootstrapActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
+    }
 }
