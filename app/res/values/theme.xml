@@ -3,9 +3,10 @@
 <resources>
 
     <style name="Theme.Bootstrap.Dark" parent="@style/Theme.Sherlock">
-        <item name="android:windowBackground">@color/pager_background</item>
+        <item name="android:windowBackground">@drawable/main_background</item>
         <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
-        <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>        
+        <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="android:imageButtonStyle">@style/BootstrapImageButton</item>
     </style>
 
     <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.ActionBar.Solid">

@@ -41,4 +41,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="BootstrapImageButton">
+        <item name="android:background">@drawable/button_background_states</item>
+        <item name="android:paddingTop">8dip</item>
+        <item name="android:paddingBottom">8dip</item>
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:paddingRight">10dip</item>
+    </style>
+
 </resources>
