@@ -4,28 +4,29 @@ import org.apache.http.HttpStatus;
 
 public class Constants {
     public static final String REQUEST = "request";
+
     //TODO: Finish flushing out these default values.
     public enum HttpProtocol {
         HTTP("HTTP", "http://"),
         HTTPS("HTTPS", "https://");
-        private String label;
+        private String name;
         private String value;
 
-        private HttpProtocol(String label, String value) {
-            this.label = label;
+        private HttpProtocol(String name, String value) {
+            this.name = name;
             this.value = value;
         }
 
-        public static HttpProtocol valueOfLabel(String label) {
-            return ValueOf.valueOf(HttpProtocol.class, "label", label);
+        public static HttpProtocol findByName(String name) {
+            return ValueOf.valueOf(HttpProtocol.class, "name", name);
         }
 
-        public static HttpProtocol valueOfValue(String value) {
+        public static HttpProtocol findByValue(String value) {
             return ValueOf.valueOf(HttpProtocol.class, "value", value);
         }
 
-        public String getLabel() {
-            return label;
+        public String getName() {
+            return name;
         }
 
         public String getValue() {
@@ -33,28 +34,32 @@ public class Constants {
         }
     }
 
-    //TODO: Finish flushing out these default values. See http://jackson.codehaus.org/javadoc/jax-rs/1.0/javax/ws/rs/HttpMethod.html
     public enum RequestMethod {
         GET("GET", "GET"),
-        POST("POST", "POST");
-        private String label;
+        POST("POST", "POST"),
+        PUT("PUT", "PUT"),
+        DELETE("DELETE", "DELETE"),
+        HEAD("HEAD", "HEAD"),
+        OPTIONS("OPTIONS", "OPTIONS"),
+        PATCH("PATCH", "PATCH");
+        private String name;
         private String value;
 
-        private RequestMethod(String label, String value) {
-            this.label = label;
+        private RequestMethod(String name, String value) {
+            this.name = name;
             this.value = value;
         }
 
-        public static RequestMethod valueOfLabel(String label) {
-            return ValueOf.valueOf(RequestMethod.class, "label", label);
+        public static RequestMethod findByName(String name) {
+            return ValueOf.valueOf(RequestMethod.class, "name", name);
         }
 
-        public static RequestMethod valueOfValue(String value) {
+        public static RequestMethod findByValue(String value) {
             return ValueOf.valueOf(RequestMethod.class, "value", value);
         }
 
-        public String getLabel() {
-            return label;
+        public String getName() {
+            return name;
         }
 
         public String getValue() {
@@ -78,61 +83,94 @@ public class Constants {
         FORBIDDEN("Forbidden", HttpStatus.SC_FORBIDDEN),
         GATEWAY_TIMEOUT("Gateway Timeout", HttpStatus.SC_GATEWAY_TIMEOUT),
         GONE("Gone", HttpStatus.SC_GONE);
-        private String label;
-        private int value;
+        private String name;
+        private String value;
 
-        private HttpStatusCode(String label, int value) {
-            this.label = label;
-            this.value = value;
+        private HttpStatusCode(String name, int value) {
+            this.name = name;
+            this.value = String.valueOf(value);
         }
 
-        public static HttpStatusCode valueOfLabel(String label) {
-            return ValueOf.valueOf(HttpStatusCode.class, "label", label);
+        public static HttpStatusCode findByName(String name) {
+            return ValueOf.valueOf(HttpStatusCode.class, "name", name);
         }
 
-        public static HttpStatusCode valueOfValue(int value) {
+        public static HttpStatusCode findByValue(int value) {
+            return findByValue(String.valueOf(value));
+        }
+
+        public static HttpStatusCode findByValue(String value) {
             return ValueOf.valueOf(HttpStatusCode.class, "value", value);
         }
 
-        public String getLabel() {
-            return label;
-        }
-
-        public int getValue() {
-            return value;
-        }
-    }
-
-    //TODO: Finish flushing out these  values. See http://jackson.codehaus.org/javadoc/jax-rs/1.0/javax/ws/rs/core/HttpHeaders.html
-    public enum HttpHeader {
-        KEEP_ALIVE("Keep-Alive", "Keep-Alive"),
-        CONTENT_ENCODING("Content-Encoding", "Content-Encoding"),
-        CONTENT_LENGTH("Content-Length", "Content-Length"),
-        CONTENT_TYPE("Content-Type", "Content-Type");
-        private String label;
-        private String value;
-
-        private HttpHeader(String label, String value) {
-            this.label = label;
-            this.value = value;
-        }
-
-        public static HttpHeader valueOfLabel(String label) {
-            return ValueOf.valueOf(HttpHeader.class, "label", label);
-        }
-
-        public static HttpHeader valueOfValue(String value) {
-            return ValueOf.valueOf(HttpHeader.class, "value", value);
-        }
-
-        public String getLabel() {
-            return label;
+        public String getName() {
+            return name;
         }
 
         public String getValue() {
             return value;
         }
+    }
+
+    //TODO: Finish flushing out these  values. See http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.2
+    public enum HttpHeader {
+        ACCEPT("Accept", "Accept"),
+        ACCEPT_CHARSET("Accept-Charset", "Accept-Charset"),
+        ACCEPT_ENCODING("Accept-Encoding", "Accept-Encoding"),
+        ACCEPT_LANGUAGE("Accept-Language", "Accept-Language"),
+        ACCEPT_RANGES("Accept Ranges", "Accept-Ranges"),
+        AGE("Age", "Age"),
+        ALLOW("Allow", "Allow"),
+        AUTHORIZATION("Authorization", "Authorization"),
+        CACHE_CONTROL("Cache-Control", "Cache-Control"),
+        CONNECTION("Connection", "Connection"),
+        CONTENT_ENCODING("Content-Encoding", "Content-Encoding"),
+        CONTENT_LANGUAGE("Content-Language", "Content-Language"),
+        CONTENT_LENGTH("Content-Length", "Content-Length"),
+        CONTENT_LOCATION("Content-Location", "Content-Location"),
+        CONTENT_MD5("Content-MD5", "Content-MD5"),
+        CONTENT_RANGE("Content-Range", "Content-Range"),
+        CONTENT_TYPE("Content-Type", "Content-Type"),
+        DATE("Date", "Date"),
+        ETAG("ETag", "ETag"),
+        EXPECT("Expect", "Expect"),
+        EXPIRES("Expires", "Expires"),
+        FROM("From", "From"),
+        HOST("Host", "Host"),
+        IF_MATCH("If-Match", "If-Match"),
+        IF_MODIFIED_SINCE("If-Modified-Since", "If-Modified-Since"),
+        IF_NONE_MATCH("If-None-Match", "If-None-Match"),
+        IF_RANGE("If-Range", "If-Range"),
+        IF_UNMODIFIED_SINCE("If-Unmodified-Since", "If-Unmodified-Since"),
+        LAST_MODIFIED("Last-Modified", "Last-Modified"),
+        LOCATION("Location", "Location"),
+        MAX_FORWARDS("Max-Forwards", "Max-Forwards"),
+        PRAGMA("Pragma", "Pragma"),
+        PROXY_AUTHENTICATE("Proxy-Authenticate", "Proxy-Authenticate");
+        private String name;
+        private String value;
+
+        private HttpHeader(String name, String value) {
+            this.name = name;
+            this.value = value;
         }
+
+        public static HttpHeader findByName(String name) {
+            return ValueOf.valueOf(HttpHeader.class, "name", name);
+        }
+
+        public static HttpHeader findByValue(String value) {
+            return ValueOf.valueOf(HttpHeader.class, "value", value);
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
 
     //TODO: Add in media types from http://jackson.codehaus.org/javadoc/jax-rs/1.0/javax/ws/rs/core/MediaType.html
 }

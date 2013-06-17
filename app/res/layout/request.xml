@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView">
+        android:id="@+id/request_scroll" android:background="@color/abs__background_holo_dark">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
@@ -61,10 +61,15 @@
                     android:layout_centerVertical="true"
                     android:id="@+id/tv_query_parameters_label"/>
         </RelativeLayout>
-        <ListView
+        <com.wemakestuff.httptester.view.FlowLayout android:id="@+id/fl_query_parameters"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_width="match_parent"/>
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/lv_query_parameters"/>
+                android:text="@string/no_query_parameters"
+                android:id="@+id/tv_no_query_parameters"
+                android:visibility="gone"/>
         <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
@@ -91,10 +96,15 @@
                     android:layout_toLeftOf="@id/ib_add_headers"
                     android:id="@+id/tv_headers_label"/>
         </RelativeLayout>
-        <ListView
+        <com.wemakestuff.httptester.view.FlowLayout android:id="@+id/fl_headers"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_width="match_parent"/>
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/lv_headers"/>
+                android:text="@string/no_headers"
+                android:id="@+id/tv_no_headers"
+                android:visibility="gone"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

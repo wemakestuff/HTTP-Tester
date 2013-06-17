@@ -35,6 +35,8 @@
     <string name="sort">Sort</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="no_query_parameters">No Query Parameters Added</string>
+    <string name="no_headers">No Headers Added</string>
 
     <string name="output">Output</string>
     <string name="no_test_history">No Test History</string>
