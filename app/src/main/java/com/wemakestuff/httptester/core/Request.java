@@ -7,7 +7,7 @@ import org.apache.http.message.BasicNameValuePair;
 import java.io.Serializable;
 import java.util.List;
 
-public class Test implements Serializable {
+public class Request implements Serializable {
 
     private static final long serialVersionUID = -6641292855569752036L;
 
