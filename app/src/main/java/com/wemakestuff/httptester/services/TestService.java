@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 
 /**
- * Class used for sending and receiving a test via HTTP.
+ * Class used for sending and receiving a request via HTTP.
  */
 public class TestService {
 

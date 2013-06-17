@@ -4,19 +4,26 @@
 
     <string name="app_name">HTTP Tester</string>
     <string name="date_column">Date</string>
+    <string name="request">Request</string>
+    <string name="response">Response</string>
+    <string name="response_body">Response Body</string>
     <string name="choose">Choose</string>
     <string name="stop">Stop</string>
     <string name="start">Start</string>
-    <string name="uri_label">URL</string>
+    <string name="url">URL</string>
     <string name="headers">Headers</string>
     <string name="query_parameters">Query Parameters</string>
     <string name="payload">Payload</string>
+    <string name="protocol">Protocol</string>
+    <string name="request_method">Request Method</string>
     <string name="clear_query_parameters">Clear Query String Parameters</string>
     <string name="add_query_parameters">Add Query String Parameter</string>
     <string name="clear_headers">Clear Headers</string>
     <string name="add_headers">Add Header</string>
     <string name="clear_all">Clear All</string>
     <string name="save_test">Save Test</string>
+    <string name="view_request">View Request</string>
+    <string name="create_request">Create Request</string>
 
     <string name="output">Output</string>
     <string name="no_test_history">No Test History</string>

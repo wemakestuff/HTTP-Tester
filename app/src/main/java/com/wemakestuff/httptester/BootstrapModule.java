@@ -2,7 +2,7 @@ package com.wemakestuff.httptester;
 
 import android.content.Context;
 import com.wemakestuff.httptester.services.TestService;
-import com.wemakestuff.httptester.ui.CarouselActivity;
+import com.wemakestuff.httptester.ui.RequestActivity;
 import com.wemakestuff.httptester.ui.TestHistoryListFragment;
 import dagger.Module;
 import dagger.Provides;
@@ -20,7 +20,7 @@ import javax.inject.Singleton;
         injects = {
                 BootstrapApplication.class,
                 TestHistoryListFragment.class,
-                CarouselActivity.class
+                RequestActivity.class
         }
 
 )

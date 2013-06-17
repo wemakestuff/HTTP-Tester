@@ -16,7 +16,7 @@ import com.wemakestuff.httptester.R;
 public class BootstrapAuthenticatorTest extends ActivityInstrumentationTestCase2<BootstrapAuthenticatorActivity> {
 
     /**
-     * Create test for {@link com.wemakestuff.httptester.authenticator.BootstrapAuthenticatorActivity}
+     * Create request for {@link com.wemakestuff.httptester.authenticator.BootstrapAuthenticatorActivity}
      */
     public BootstrapAuthenticatorTest() {
         super(BootstrapAuthenticatorActivity.class);

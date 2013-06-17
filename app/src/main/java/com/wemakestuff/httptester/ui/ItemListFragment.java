@@ -152,13 +152,13 @@ public abstract class ItemListFragment<E> extends SherlockFragment
             return false;
         switch (item.getItemId()) {
         case id.save_test:
-            Log.d("ItemListFragment", "Save Test Pressed");
+            Log.d("ItemListFragment", "Save Request Pressed");
             return true;
         case R.id.clear_all:
             Log.d("ItemListFragment", "Clear All Pressed");
             return true;
         case id.run_test:
-            Log.d("ItemListFragment", "Run Test Pressed");
+            Log.d("ItemListFragment", "Run Request Pressed");
             return true;
         default:
             return super.onOptionsItemSelected(item);

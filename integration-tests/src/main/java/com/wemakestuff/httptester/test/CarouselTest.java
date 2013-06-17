@@ -6,12 +6,12 @@ import android.test.ActivityInstrumentationTestCase2;
 
 
 /**
- * Test displaying of carousel.
+ * Request displaying of carousel.
  */
 public class CarouselTest extends ActivityInstrumentationTestCase2<CarouselActivity> {
 
     /**
-     * Create test for {@link CarouselActivity}
+     * Create request for {@link CarouselActivity}
      */
     public CarouselTest() {
         super(CarouselActivity.class);

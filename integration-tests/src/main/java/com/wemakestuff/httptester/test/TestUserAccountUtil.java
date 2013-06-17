@@ -20,14 +20,14 @@ public class TestUserAccountUtil {
 
     /**
      * Checks the device has a valid Bootstrap (on parse.com via the example API),
-     * account, if not, adds one using the test credentials found in system
-     * property 'bootstrap.test.api.key'.
+     * account, if not, adds one using the request credentials found in system
+     * property 'bootstrap.request.api.key'.
      *
      * The credentials can be passed on the command line like this: mvn
-     * -bootstrap.test.api.key=0123456789abcdef0123456789abcdef install
+     * -bootstrap.request.api.key=0123456789abcdef0123456789abcdef install
      *
      * @param instrumentation
-     *            taken from the test context
+     *            taken from the request context
      * @return true if valid account credentials are available
      */
     public static boolean ensureValidAccountAvailable(Instrumentation instrumentation) {
@@ -45,13 +45,13 @@ public class TestUserAccountUtil {
         String truncatedApiKey = testApiKey.substring(0, 4) + "…";
 
         if (!testApiKey.matches("\\p{XDigit}{32}")) {
-            Ln.w("No valid test account credentials in bootstrap.test.api.key : " + truncatedApiKey);
+            Ln.w("No valid request account credentials in bootstrap.request.api.key : " + truncatedApiKey);
             return false;
         }
 
-        Ln.i("Adding test account using supplied api key credential : " + truncatedApiKey);
-        Account account = new Account("test@example.com", BOOTSTRAP_ACCOUNT_TYPE);
-        accountManager.addAccountExplicitly(account, null, null); // this test account will not have a valid password
+        Ln.i("Adding request account using supplied api key credential : " + truncatedApiKey);
+        Account account = new Account("request@example.com", BOOTSTRAP_ACCOUNT_TYPE);
+        accountManager.addAccountExplicitly(account, null, null); // this request account will not have a valid password
         accountManager.setAuthToken(account, AUTHTOKEN_TYPE, testApiKey);
         return true;
     }

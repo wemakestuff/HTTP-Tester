@@ -2,17 +2,17 @@ package com.wemakestuff.httptester.ui;
 
 import android.view.LayoutInflater;
 import com.wemakestuff.httptester.R;
-import com.wemakestuff.httptester.core.TestHistory;
+import com.wemakestuff.httptester.core.RequestHistory;
 
 import java.util.List;
 
-public class TestHistoryListAdapter extends AlternatingColorListAdapter<TestHistory> {
+public class TestHistoryListAdapter extends AlternatingColorListAdapter<RequestHistory> {
     /**
      * @param inflater
      * @param items
      * @param selectable
      */
-    public TestHistoryListAdapter(LayoutInflater inflater, List<TestHistory> items,
+    public TestHistoryListAdapter(LayoutInflater inflater, List<RequestHistory> items,
                                   boolean selectable) {
         super(R.layout.test_history_list_item, inflater, items, selectable);
     }
@@ -21,22 +21,20 @@ public class TestHistoryListAdapter extends AlternatingColorListAdapter<TestHist
      * @param inflater
      * @param items
      */
-    public TestHistoryListAdapter(LayoutInflater inflater, List<TestHistory> items) {
+    public TestHistoryListAdapter(LayoutInflater inflater, List<RequestHistory> items) {
         super(R.layout.test_history_list_item, inflater, items);
     }
 
     @Override
     protected int[] getChildViewIds() {
-        return new int[] { R.id.tv_title, R.id.tv_summary,
-                R.id.tv_date };
+        return new int[]{R.id.tv_url, R.id.tv_date};
     }
 
     @Override
-    protected void update(int position, TestHistory item) {
+    protected void update(int position, RequestHistory item) {
         super.update(position, item);
 
-        setText(0, item.getTitle());
-        setText(1, item.getContent());
-        //setNumber(R.id.tv_date, item.getCreatedAt());
+        setText(0, item.getUrl());
+        setText(0, item.getLastUsedDate());
     }
 }

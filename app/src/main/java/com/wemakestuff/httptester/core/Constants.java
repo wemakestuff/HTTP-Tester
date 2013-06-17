@@ -3,6 +3,7 @@ package com.wemakestuff.httptester.core;
 import org.apache.http.HttpStatus;
 
 public class Constants {
+    public static final String REQUEST = "request";
     //TODO: Finish flushing out these default values.
     public enum HttpProtocol {
         HTTP("HTTP", "http://"),
@@ -32,7 +33,7 @@ public class Constants {
         }
     }
 
-    //TODO: Finish flushing out these default values.
+    //TODO: Finish flushing out these default values. See http://jackson.codehaus.org/javadoc/jax-rs/1.0/javax/ws/rs/HttpMethod.html
     public enum RequestMethod {
         GET("GET", "GET"),
         POST("POST", "POST");
@@ -102,7 +103,7 @@ public class Constants {
         }
     }
 
-    //TODO: Finish flushing out these default values.
+    //TODO: Finish flushing out these  values. See http://jackson.codehaus.org/javadoc/jax-rs/1.0/javax/ws/rs/core/HttpHeaders.html
     public enum HttpHeader {
         KEEP_ALIVE("Keep-Alive", "Keep-Alive"),
         CONTENT_ENCODING("Content-Encoding", "Content-Encoding"),
@@ -132,4 +133,6 @@ public class Constants {
             return value;
         }
         }
+
+    //TODO: Add in media types from http://jackson.codehaus.org/javadoc/jax-rs/1.0/javax/ws/rs/core/MediaType.html
 }

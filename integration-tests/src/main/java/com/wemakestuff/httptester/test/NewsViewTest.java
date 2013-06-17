@@ -13,7 +13,7 @@ import android.test.ActivityInstrumentationTestCase2;
 public class NewsViewTest extends ActivityInstrumentationTestCase2<CarouselActivity> {
 
     /**
-     * Create test for {@link com.wemakestuff.httptester.ui.CarouselActivity}
+     * Create request for {@link com.wemakestuff.httptester.ui.CarouselActivity}
      */
     public NewsViewTest() {
         super(CarouselActivity.class);
@@ -26,7 +26,7 @@ public class NewsViewTest extends ActivityInstrumentationTestCase2<CarouselActiv
     protected void setUp() throws Exception {
         super.setUp();
         Intent intent = new Intent();
-        // TODO: BUILD Test item for testing.
+        // TODO: BUILD Request item for testing.
         News news = new News();
         news.setTitle("Foo");
         news.setObjectId("Bar");

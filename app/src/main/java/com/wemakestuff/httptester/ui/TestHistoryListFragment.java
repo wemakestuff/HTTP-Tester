@@ -8,14 +8,14 @@ import android.widget.ListView;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.wemakestuff.httptester.BootstrapApplication;
 import com.wemakestuff.httptester.R;
-import com.wemakestuff.httptester.core.TestHistory;
+import com.wemakestuff.httptester.core.RequestHistory;
 import com.wemakestuff.httptester.services.TestService;
 
 import javax.inject.Inject;
 import java.util.Collections;
 import java.util.List;
 
-public class TestHistoryListFragment extends ItemListFragment<TestHistory> {
+public class TestHistoryListFragment extends ItemListFragment<RequestHistory> {
 
     @Inject
     protected TestService testService;
@@ -60,12 +60,12 @@ public class TestHistoryListFragment extends ItemListFragment<TestHistory> {
     }
 
     @Override
-    public Loader<List<TestHistory>> onCreateLoader(int id, Bundle args) {
-        final List<TestHistory> initialItems = items;
-        return new ThrowableLoader<List<TestHistory>>(getActivity(), items) {
+    public Loader<List<RequestHistory>> onCreateLoader(int id, Bundle args) {
+        final List<RequestHistory> initialItems = items;
+        return new ThrowableLoader<List<RequestHistory>>(getActivity(), items) {
 
             @Override
-            public List<TestHistory> loadData() throws Exception {
+            public List<RequestHistory> loadData() throws Exception {
                 if (getActivity() != null) {
                     //return serviceProvider.getService(getActivity()).getNews();
                     return Collections.emptyList();
@@ -77,12 +77,12 @@ public class TestHistoryListFragment extends ItemListFragment<TestHistory> {
     }
 
     @Override
-    protected SingleTypeAdapter<TestHistory> createAdapter(List<TestHistory> items) {
+    protected SingleTypeAdapter<RequestHistory> createAdapter(List<RequestHistory> items) {
         return new TestHistoryListAdapter(getActivity().getLayoutInflater(), items);
     }
 
     public void onListItemClick(ListView l, View v, int position, long id) {
-        TestHistory news = ((TestHistory) l.getItemAtPosition(position));
+        RequestHistory news = ((RequestHistory) l.getItemAtPosition(position));
 
         //startActivity(new Intent(getActivity(), NewsActivity.class).putExtra(NEWS_ITEM, news));
     }
