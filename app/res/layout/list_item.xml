@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -7,29 +6,34 @@
               android:paddingBottom="5dp"
               android:paddingLeft="10dp"
               android:paddingRight="10dp"
-              android:paddingTop="5dp" >
-
+              android:paddingTop="5dp">
     <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical" >
-
+            android:orientation="vertical">
         <TextView
-                android:id="@+id/tv_url"
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:singleLine="true"
                 android:ellipsize="end"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/table_text_selector" />
-
+                android:textColor="@color/table_text_selector"/>
         <TextView
-                android:id="@+id/tv_date"
+                android:id="@+id/tv_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/table_text_selector" />
+                android:textColor="@color/table_text_selector"/>
     </LinearLayout>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_edit" android:src="@drawable/ic_menu_edit"/>
+    <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/item_delete"
+                 android:src="@drawable/ic_menu_delete"/>
 
 </LinearLayout>
